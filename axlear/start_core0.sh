@@ -12,7 +12,7 @@ then
 EOF
 fi
 
-/usr/local/bin/gaiad start \
-  --minimum-gas-prices 0stake \
+/usr/local/bin/axelard start \
   --home /opt \
+
   

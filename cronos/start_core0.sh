@@ -12,7 +12,8 @@ then
 EOF
 fi
 
-/usr/local/bin/gaiad start \
+/usr/local/bin/cronosd start \
   --minimum-gas-prices 0stake \
   --home /opt \
+
   

@@ -12,7 +12,7 @@ then
 EOF
 fi
 
-/usr/local/bin/gaiad start \
+/usr/local/bin/injectived start \
   --minimum-gas-prices 0stake \
   --home /opt \
   

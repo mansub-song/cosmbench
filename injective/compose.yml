@@ -1,0 +1,90 @@
+version: '3'
+
+services:
+  core0:
+    user: "0:0"
+    container_name: core0
+    image: public.ecr.aws/l9h3g6c6/injective-core:v1.13.3
+    ports:
+      - "9090:9090"
+      - "26657:26657"
+    entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
+    # entrypoint: ["sleep", "infinity"]
+    volumes:
+      - ./core0/config/node_key.json:/opt/config/node_key.json
+      - ./core0/config/priv_validator_key.json:/opt/config/priv_validator_key.json
+      - ./core0/keyring-test:/opt/keyring-test
+      - ./core0/config/config.toml:/opt/config/config.toml
+      - ./core0/config/app.toml:/opt/config/app.toml
+      - ./core0/config/genesis.json:/opt/config/genesis.json
+      - ./start_core0.sh:/opt/start_core0.sh
+    networks:
+      injective-networks:
+        ipv4_address: 10.111.101.11
+
+  core1:
+    user: "0:0"
+    container_name: core1
+    image: public.ecr.aws/l9h3g6c6/injective-core:v1.13.3
+    depends_on:
+      - core0
+    entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
+    volumes:
+      - ./core1/config/node_key.json:/opt/config/node_key.json
+      - ./core1/config/priv_validator_key.json:/opt/config/priv_validator_key.json
+      - ./core1/keyring-test:/opt/keyring-test
+      - ./core1/config/config.toml:/opt/config/config.toml
+      - ./core1/config/app.toml:/opt/config/app.toml
+      - ./core0/config/genesis.json:/opt/config/genesis.json
+      - ./start_core0.sh:/opt/start_core0.sh
+    networks:
+      injective-networks:
+        ipv4_address: 10.111.101.12
+
+
+  core2:
+    user: "0:0"
+    container_name: core2
+    image: public.ecr.aws/l9h3g6c6/injective-core:v1.13.3
+    depends_on:
+      - core0
+    entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
+    volumes:
+      - ./core2/config/node_key.json:/opt/config/node_key.json
+      - ./core2/config/priv_validator_key.json:/opt/config/priv_validator_key.json
+      - ./core2/keyring-test:/opt/keyring-test
+      - ./core2/config/config.toml:/opt/config/config.toml
+      - ./core2/config/app.toml:/opt/config/app.toml
+      - ./core0/config/genesis.json:/opt/config/genesis.json
+      - ./start_core0.sh:/opt/start_core0.sh
+    networks:
+      injective-networks:
+        ipv4_address: 10.111.101.13
+  
+  core3:
+    user: "0:0"
+    container_name: core3
+    image: public.ecr.aws/l9h3g6c6/injective-core:v1.13.3
+    depends_on:
+      - core0
+    entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
+    volumes:
+      - ./core3/config/node_key.json:/opt/config/node_key.json
+      - ./core3/config/priv_validator_key.json:/opt/config/priv_validator_key.json
+      - ./core3/keyring-test:/opt/keyring-test
+      - ./core3/config/config.toml:/opt/config/config.toml
+      - ./core3/config/app.toml:/opt/config/app.toml
+      - ./core0/config/genesis.json:/opt/config/genesis.json
+      - ./start_core0.sh:/opt/start_core0.sh
+    networks:
+      injective-networks:
+        ipv4_address: 10.111.101.14
+
+
+networks:
+  injective-networks:
+    name: injective-network
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.111.0.0/16
