@@ -1,0 +1,16 @@
+=============== Jan 7, 2025 (UTC) ===============
+09:45:06.319907 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+09:45:06.332861 db@open opening
+09:45:06.333378 version@stat F·[] S·0B[] Sc·[]
+09:45:06.335412 db@janitor F·2 G·0
+09:45:06.335441 db@open done T·2.543667ms
+=============== Jan 7, 2025 (UTC) ===============
+09:47:18.194904 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+09:47:18.195455 version@stat F·[] S·0B[] Sc·[]
+09:47:18.195635 db@open opening
+09:47:18.195745 journal@recovery F·1
+09:47:18.195812 journal@recovery recovering @1
+09:47:18.197869 memdb@flush created L0@2 N·6 S·7KiB "con..y:1,v4":"val..y:2,v3"
+09:47:18.198391 version@stat F·[1] S·7KiB[7KiB] Sc·[0.25]
+09:47:18.203422 db@janitor F·3 G·0
+09:47:18.203452 db@open done T·7.803585ms
