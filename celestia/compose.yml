@@ -3,18 +3,22 @@ services:
     user: "0:0"
     container_name: core0
     image: ghcr.io/rollkit/local-celestia-devnet:latest
+    environment:
+      - MONIKER=core0
+      - CELESTIA_HOME=/opt
+      - AMOUNT=5000000000utia
     ports:
       - "9090:9090"
       - "26657:26657"
-    command: ["/bin/bash", "/opt/start_core0.sh"]
+    entrypoint: ["/bin/bash", "/opt/start_core0.sh"]
     volumes:
-      - ./celestia/core0/config/node_key.json:/opt/config/node_key.json:ro
-      - ./celestia/core0/config/priv_validator_key.json:/opt/config/priv_validator_key.json:ro
-      - ./celestia/core0/keyring-test:/opt/keyring-test:ro
-      - ./celestia/config.toml:/opt/config/config.toml:ro
-      - ./celestia/app.toml:/opt/config/app.toml:ro
-      - ./celestia/genesis.json:/opt/config/genesis.json:rw
-      - ./celestia/start_core0.sh:/opt/start_core0.sh:ro
+      - ./core0/config/node_key.json:/opt/config/node_key.json
+      - ./core0/config/priv_validator_key.json:/opt/config/priv_validator_key.json
+      - ./core0/keyring-test:/opt/keyring-test
+      - ./config.toml:/opt/config/config.toml
+      - ./app.toml:/opt/config/app.toml
+      - ./genesis.json:/opt/config/genesis.json
+      - ./start_core0.sh:/opt/start_core0.sh
 
   core1:
     user: "0:0"
@@ -26,16 +30,15 @@ services:
       - MONIKER=core1
       - CELESTIA_HOME=/opt
       - AMOUNT=5000000000utia
-    command: ["/bin/bash", "/opt/start_core0.sh"]
+    entrypoint: ["/bin/bash", "/opt/start_node.sh"]
     volumes:
-      - ./celestia/core1/config/node_key.json:/opt/config/node_key.json:ro
-      - ./celestia/core1/config/priv_validator_key.json:/opt/config/priv_validator_key.json:ro
-      - ./celestia/core1/keyring-test:/opt/keyring-test:ro
-      - ./celestia/config.toml:/opt/config/config.toml:ro
-      - ./celestia/app.toml:/opt/config/app.toml:ro
-      - ./celestia/genesis.json:/opt/config/genesis.json:rw
-      - ./celestia/start_node_and_create_validator.sh:/opt/start_node_and_create_validator.sh:ro
-
+      - ./core1/config/node_key.json:/opt/config/node_key.json
+      - ./core1/config/priv_validator_key.json:/opt/config/priv_validator_key.json
+      - ./core1/keyring-test:/opt/keyring-test
+      - ./config.toml:/opt/config/config.toml
+      - ./app.toml:/opt/config/app.toml
+      - ./genesis.json:/opt/config/genesis.json
+      - ./start_node.sh:/opt/start_node.sh
 
   core2:
     user: "0:0"
@@ -47,16 +50,16 @@ services:
       - MONIKER=core2
       - CELESTIA_HOME=/opt
       - AMOUNT=5000000000utia
-    command: ["/bin/bash", "/opt/start_core0.sh"]
+    entrypoint: ["/bin/bash", "/opt/start_node.sh"]
     volumes:
-      - ./celestia/core2/config/node_key.json:/opt/config/node_key.json:ro
-      - ./celestia/core2/config/priv_validator_key.json:/opt/config/priv_validator_key.json:ro
-      - ./celestia/core2/keyring-test:/opt/keyring-test:ro
-      - ./celestia/config.toml:/opt/config/config.toml:ro
-      - ./celestia/app.toml:/opt/config/app.toml:ro
-      - ./celestia/genesis.json:/opt/config/genesis.json:rw
-      - ./celestia/start_node_and_create_validator.sh:/opt/start_node_and_create_validator.sh:ro
-  
+      - ./core2/config/node_key.json:/opt/config/node_key.json
+      - ./core2/config/priv_validator_key.json:/opt/config/priv_validator_key.json
+      - ./core2/keyring-test:/opt/keyring-test
+      - ./config.toml:/opt/config/config.toml
+      - ./app.toml:/opt/config/app.toml
+      - ./genesis.json:/opt/config/genesis.json
+      - ./start_node.sh:/opt/start_node.sh
+
   core3:
     user: "0:0"
     container_name: core3
@@ -67,12 +70,12 @@ services:
       - MONIKER=core3
       - CELESTIA_HOME=/opt
       - AMOUNT=5000000000utia
-    command: ["/bin/bash", "/opt/start_core0.sh"]
+    entrypoint: ["/bin/bash", "/opt/start_node.sh"]
     volumes:
-      - ./celestia/core3/config/node_key.json:/opt/config/node_key.json:ro
-      - ./celestia/core3/config/priv_validator_key.json:/opt/config/priv_validator_key.json:ro
-      - ./celestia/core3/keyring-test:/opt/keyring-test:ro
-      - ./celestia/config.toml:/opt/config/config.toml:ro
-      - ./celestia/app.toml:/opt/config/app.toml:ro
-      - ./celestia/genesis.json:/opt/config/genesis.json:rw
-      - ./celestia/start_node_and_create_validator.sh:/opt/start_node_and_create_validator.sh:ro
+      - ./core3/config/node_key.json:/opt/config/node_key.json
+      - ./core3/config/priv_validator_key.json:/opt/config/priv_validator_key.json
+      - ./core3/keyring-test:/opt/keyring-test
+      - ./config.toml:/opt/config/config.toml
+      - ./app.toml:/opt/config/app.toml
+      - ./genesis.json:/opt/config/genesis.json
+      - ./start_node.sh:/opt/start_node.sh
