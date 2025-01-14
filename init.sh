@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NODE_COUNT=4
-ACCOUNT_COUNT_PER_LOOP=4
+ACCOUNT_COUNT_PER_LOOP=500
 BINARY=/Users/kyungmin/go/bin/injectived
 MONIKER=core
 CHAIN_ID=local_devnet
@@ -10,7 +10,7 @@ KEYRING_BACKEND="test"
 ACCOUNT_DIR=/Users/kyungmin/go/bin/accounts
 ACCOUNT_NAME_PREFIX="account_"
 GENESIS_DIR=$NODE_ROOT_DIR"/node0"
-UNIT="stake"
+UNIT="utia"
 
 
 for ((i=0;i<$NODE_COUNT;i++))

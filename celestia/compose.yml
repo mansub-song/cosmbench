@@ -10,15 +10,19 @@ services:
     ports:
       - "9090:9090"
       - "26657:26657"
+      - "13117:1317"
     entrypoint: ["/bin/bash", "/opt/start_core0.sh"]
     volumes:
       - ./core0/config/node_key.json:/opt/config/node_key.json
       - ./core0/config/priv_validator_key.json:/opt/config/priv_validator_key.json
       - ./core0/keyring-test:/opt/keyring-test
-      - ./config.toml:/opt/config/config.toml
-      - ./app.toml:/opt/config/app.toml
-      - ./genesis.json:/opt/config/genesis.json
+      - ./core0/config/config.toml:/opt/config/config.toml
+      - ./core0/config/app.toml:/opt/config/app.toml
+      - ./core0/config/genesis.json:/opt/config/genesis.json
       - ./start_core0.sh:/opt/start_core0.sh
+    networks:
+      celestia-networks:
+        ipv4_address: 10.122.101.11
 
   core1:
     user: "0:0"
@@ -30,15 +34,21 @@ services:
       - MONIKER=core1
       - CELESTIA_HOME=/opt
       - AMOUNT=5000000000utia
-    entrypoint: ["/bin/bash", "/opt/start_node.sh"]
+    ports:
+      - "26658:26657"
+      - "13118:1317"
+    entrypoint: ["/bin/bash", "/opt/start_core0.sh"]
     volumes:
       - ./core1/config/node_key.json:/opt/config/node_key.json
       - ./core1/config/priv_validator_key.json:/opt/config/priv_validator_key.json
       - ./core1/keyring-test:/opt/keyring-test
-      - ./config.toml:/opt/config/config.toml
-      - ./app.toml:/opt/config/app.toml
-      - ./genesis.json:/opt/config/genesis.json
-      - ./start_node.sh:/opt/start_node.sh
+      - ./core1/config/config.toml:/opt/config/config.toml
+      - ./core1/config/app.toml:/opt/config/app.toml
+      - ./core0/config/genesis.json:/opt/config/genesis.json
+      - ./start_core0.sh:/opt/start_core0.sh
+    networks:
+      celestia-networks:
+        ipv4_address: 10.122.101.12
 
   core2:
     user: "0:0"
@@ -50,15 +60,21 @@ services:
       - MONIKER=core2
       - CELESTIA_HOME=/opt
       - AMOUNT=5000000000utia
-    entrypoint: ["/bin/bash", "/opt/start_node.sh"]
+    ports:
+      - "26659:26657"
+      - "13119:1317"
+    entrypoint: ["/bin/bash", "/opt/start_core0.sh"]
     volumes:
       - ./core2/config/node_key.json:/opt/config/node_key.json
       - ./core2/config/priv_validator_key.json:/opt/config/priv_validator_key.json
       - ./core2/keyring-test:/opt/keyring-test
-      - ./config.toml:/opt/config/config.toml
-      - ./app.toml:/opt/config/app.toml
-      - ./genesis.json:/opt/config/genesis.json
-      - ./start_node.sh:/opt/start_node.sh
+      - ./core2/config/config.toml:/opt/config/config.toml
+      - ./core2/config/app.toml:/opt/config/app.toml
+      - ./core0/config/genesis.json:/opt/config/genesis.json
+      - ./start_core0.sh:/opt/start_core0.sh
+    networks:
+      celestia-networks:
+        ipv4_address: 10.122.101.13
 
   core3:
     user: "0:0"
@@ -70,12 +86,26 @@ services:
       - MONIKER=core3
       - CELESTIA_HOME=/opt
       - AMOUNT=5000000000utia
-    entrypoint: ["/bin/bash", "/opt/start_node.sh"]
+    ports:
+      - "26660:26657"
+      - "13110:1317"
+    entrypoint: ["/bin/bash", "/opt/start_core0.sh"]
     volumes:
       - ./core3/config/node_key.json:/opt/config/node_key.json
       - ./core3/config/priv_validator_key.json:/opt/config/priv_validator_key.json
       - ./core3/keyring-test:/opt/keyring-test
-      - ./config.toml:/opt/config/config.toml
-      - ./app.toml:/opt/config/app.toml
-      - ./genesis.json:/opt/config/genesis.json
-      - ./start_node.sh:/opt/start_node.sh
+      - ./core3/config/config.toml:/opt/config/config.toml
+      - ./core3/config/app.toml:/opt/config/app.toml
+      - ./core0/config/genesis.json:/opt/config/genesis.json
+      - ./start_core0.sh:/opt/start_core0.sh
+    networks:
+      celestia-networks:
+        ipv4_address: 10.122.101.14
+
+networks:
+  celestia-networks:
+    name: celestia-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.122.0.0/16
