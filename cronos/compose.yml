@@ -7,6 +7,7 @@ services:
     ports:
       - "9090:9090"
       - "26657:26657"
+      - "13117:1317"
     entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
     # entrypoint: ["sleep", "infinity"]
     volumes:
@@ -28,6 +29,8 @@ services:
     platform: linux/amd64
     depends_on:
       - core0
+    ports:
+      - "13118:1317"
     entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
     volumes:
       - ./core1/config/node_key.json:/opt/config/node_key.json
@@ -41,7 +44,6 @@ services:
       cronos-networks:
         ipv4_address: 10.113.101.12
 
-
   core2:
     user: "0:0"
     container_name: core2
@@ -49,6 +51,8 @@ services:
     platform: linux/amd64
     depends_on:
       - core0
+    ports:
+      - "13119:1317"
     entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
     volumes:
       - ./core2/config/node_key.json:/opt/config/node_key.json
@@ -61,7 +65,7 @@ services:
     networks:
       cronos-networks:
         ipv4_address: 10.113.101.13
-  
+
   core3:
     user: "0:0"
     container_name: core3
@@ -69,6 +73,8 @@ services:
     platform: linux/amd64
     depends_on:
       - core0
+    ports:
+      - "13110:1317"
     entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
     volumes:
       - ./core3/config/node_key.json:/opt/config/node_key.json
@@ -82,11 +88,10 @@ services:
       cronos-networks:
         ipv4_address: 10.113.101.14
 
-
 networks:
   cronos-networks:
     name: cronos-network
     driver: bridge
     ipam:
-     config:
-       - subnet: 10.113.0.0/16
+      config:
+        - subnet: 10.113.0.0/16

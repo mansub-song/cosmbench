@@ -1,7 +1,7 @@
 {
   "app_name": "cronosd",
   "app_version": "1.4.0-11-g5ebf305",
-  "genesis_time": "2025-01-08T04:35:19.740199Z",
+  "genesis_time": "2025-01-15T09:16:47.31605Z",
   "chain_id": "localtestnet_338-1",
   "initial_height": 1,
   "app_hash": null,

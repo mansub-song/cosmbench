@@ -1,7 +1,7 @@
 {
   "app_name": "cronosd",
   "app_version": "1.4.0-11-g5ebf305",
-  "genesis_time": "2025-01-08T04:35:19.664117Z",
+  "genesis_time": "2025-01-15T09:16:47.238253Z",
   "chain_id": "localtestnet_338-1",
   "initial_height": 1,
   "app_hash": null,
@@ -18,7 +18,7 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "crc1qqzg5uuumkc3k0eavdlfaq4nraw79kmndk7yu7",
+          "address": "crc1qu55cv36g7mgvxu8pry8nn4psrmqfwkhnusnar",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -32,10 +32,10 @@
       },
       "balances": [
         {
-          "address": "crc1qqzg5uuumkc3k0eavdlfaq4nraw79kmndk7yu7",
+          "address": "crc1qu55cv36g7mgvxu8pry8nn4psrmqfwkhnusnar",
           "coins": [
             {
-              "denom": "stake",
+              "denom": "basetcro",
               "amount": "9990004452404000000000"
             }
           ]
@@ -43,7 +43,7 @@
       ],
       "supply": [
         {
-          "denom": "stake",
+          "denom": "basetcro",
           "amount": "9990004452404000000000"
         }
       ],

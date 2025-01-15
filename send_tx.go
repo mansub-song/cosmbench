@@ -19,10 +19,10 @@ import (
 2. HOSTS - 노드 IP (노드는 4대 기준)
 3. REST_PORTS - 노드의 REST API 포트 (노드는 4대 기준)
 */
-var encodedTxDir = "./axlear/encode_txs"
+var encodedTxDir = "./cronos/encode_txs"
 
 // 노드 설정
-var HOSTS = []string{"10.112.101.11", "10.112.101.11", "10.112.101.11", "10.112.101.11"}
+var HOSTS = []string{"10.113.101.11", "10.113.101.11", "10.113.101.11", "10.113.101.11"}
 var REST_PORTS = []string{"1317", "1317", "1317", "1317"}
 
 var numTxs int   // 총 트랜잭션 수
@@ -69,7 +69,7 @@ func sendTransaction(txIdx int, tx string, wg *sync.WaitGroup) {
 	// 요청 데이터 준비: 트랜잭션 바이트와 브로드캐스트 모드 설정
 	requestData := TxData{
 		TxBytes: tx,
-		Mode:    "BROADCAST_MODE_ASYNC", // 비동기 브로드캐스트 모드 사용
+		Mode:    "BROADCAST_MODE_SYNC", // 비동기 브로드캐스트 모드 사용
 	}
 
 	// 요청 데이터를 JSON으로 변환
