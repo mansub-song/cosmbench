@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2025-01-08T03:55:45.275729Z",
-  "chain_id": "local_devnet",
+  "genesis_time": "2025-01-15T06:05:42.746047Z",
+  "chain_id": "local-test",
   "initial_height": "1",
   "consensus_params": {
     "block": {
@@ -33,7 +33,7 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "axelar1c7pgsrdjjkheudmpmj6c2j9mx8w0fzzdu4q4vq",
+          "address": "axelar1j4vcj2jzqt8de46u2tqnflzd8z0497nnf0xye2",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -70,7 +70,7 @@
       },
       "balances": [
         {
-          "address": "axelar1c7pgsrdjjkheudmpmj6c2j9mx8w0fzzdu4q4vq",
+          "address": "axelar1j4vcj2jzqt8de46u2tqnflzd8z0497nnf0xye2",
           "coins": [
             {
               "denom": "uaxl",

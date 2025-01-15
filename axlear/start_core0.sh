@@ -14,5 +14,3 @@ fi
 
 /usr/local/bin/axelard start \
   --home /opt \
-
-  

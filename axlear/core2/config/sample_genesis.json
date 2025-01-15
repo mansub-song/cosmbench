@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2025-01-08T03:55:45.237397Z",
-  "chain_id": "local_devnet",
+  "genesis_time": "2025-01-15T06:05:42.708742Z",
+  "chain_id": "local-test",
   "initial_height": "1",
   "consensus_params": {
     "block": {

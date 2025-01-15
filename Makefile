@@ -1,7 +1,7 @@
 start-celestia:
 	cd celestia && docker compose up -d && cd -
 
-start-axlear:
+start-axelar:
 	cd axlear && docker compose up -d && cd -
 
 start-cronos:
@@ -12,3 +12,6 @@ start-gaia:
 
 start-injective:
 	cd injective && docker compose up -d && cd -
+
+calc-celestia:
+	go run send_tx.go 2000 2
