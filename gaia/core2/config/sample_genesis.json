@@ -1,7 +1,7 @@
 {
   "app_name": "gaiad",
-  "app_version": "main-77a89b98f5503fcfd243b2aa1e95dfb0a7de1207",
-  "genesis_time": "2025-01-07T06:10:45.784825Z",
+  "app_version": "main-26fec1c740dc4c0bb7419184ad95c3b3df7370a6",
+  "genesis_time": "2025-01-21T04:43:36.0497Z",
   "chain_id": "local_devnet",
   "initial_height": 1,
   "app_hash": null,

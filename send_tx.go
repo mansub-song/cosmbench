@@ -19,10 +19,10 @@ import (
 2. HOSTS - 노드 IP (노드는 4대 기준)
 3. REST_PORTS - 노드의 REST API 포트 (노드는 4대 기준)
 */
-var encodedTxDir = "./celestia/encode_txs"
+var encodedTxDir = "./gaia/encode_txs"
 
 // 노드 설정
-var HOSTS = []string{"10.122.101.11", "10.122.101.12", "10.122.101.13", "10.122.101.14"}
+var HOSTS = []string{"10.110.101.14", "10.110.101.14", "10.110.101.14", "10.110.101.14"}
 var REST_PORTS = []string{"1317", "1317", "1317", "1317"}
 
 var numTxs int   // 총 트랜잭션 수
