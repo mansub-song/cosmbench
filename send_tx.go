@@ -22,7 +22,7 @@ import (
 var encodedTxDir = "./gaia/encode_txs"
 
 // 노드 설정
-var HOSTS = []string{"10.110.101.14", "10.110.101.14", "10.110.101.14", "10.110.101.14"}
+var HOSTS = []string{"10.110.101.11", "10.110.101.12", "10.110.101.13", "10.110.101.14"}
 var REST_PORTS = []string{"1317", "1317", "1317", "1317"}
 
 var numTxs int   // 총 트랜잭션 수
@@ -69,7 +69,7 @@ func sendTransaction(txIdx int, tx string, wg *sync.WaitGroup) {
 	// 요청 데이터 준비: 트랜잭션 바이트와 브로드캐스트 모드 설정
 	requestData := TxData{
 		TxBytes: tx,
-		Mode:    "BROADCAST_MODE_SYNC", // 비동기 브로드캐스트 모드 사용
+		Mode:    "BROADCAST_MODE_ASYNC", // 비동기 브로드캐스트 모드 사용
 	}
 
 	// 요청 데이터를 JSON으로 변환

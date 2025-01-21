@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ACCOUNT_COUNT=500
+ACCOUNT_COUNT=2000
 BINARY=gaiad
 NODE_HOME=/opt
 CHAIN_ID=local_devnet
@@ -17,7 +17,7 @@ mkdir -p "$UNSIGNED_TX_ROOT_DIR"
 mkdir -p "$SIGNED_TX_ROOT_DIR"
 mkdir -p "$ENCODED_TX_ROOT_DIR"
 
-i=0
+i=1500
 while [ "$i" -lt "$ACCOUNT_COUNT" ]; do
     ACCOUNT_NAME="account_$i"
     ACCOUNT_ADDRESS=$($BINARY keys show "$ACCOUNT_NAME" -a --home "$NODE_HOME" --keyring-backend test)
