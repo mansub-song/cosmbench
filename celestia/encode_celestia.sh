@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ACCOUNT_COUNT=2000
+ACCOUNT_COUNT=20000
 BINARY=celestia-appd
 NODE_HOME=/opt
 CHAIN_ID=local_devnet
@@ -17,7 +17,7 @@ mkdir -p $UNSIGNED_TX_ROOT_DIR
 mkdir -p $SIGNED_TX_ROOT_DIR
 mkdir -p $ENCODED_TX_ROOT_DIR
 
-for ((i=1500; i<ACCOUNT_COUNT; i++)); do
+for ((i=15000; i<ACCOUNT_COUNT; i++)); do
     ACCOUNT_NAME="account_$i"
     ACCOUNT_ADDRESS=$($BINARY keys show $ACCOUNT_NAME -a --home $NODE_HOME --keyring-backend test)
 

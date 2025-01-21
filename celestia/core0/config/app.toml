@@ -121,7 +121,7 @@ global-labels = [
 enable = true
 
 # Swagger defines if swagger documentation should automatically be registered.
-swagger = true
+swagger = false
 
 # Address defines the API server to listen on.
 address = "tcp://0.0.0.0:1317"
@@ -184,7 +184,7 @@ denom-to-suggest = "uatom"
 [grpc]
 
 # Enable defines if the gRPC server should be enabled.
-enable = true
+enable = false
 
 # Address defines the gRPC server address to bind to.
 address = "0.0.0.0:9090"
@@ -205,7 +205,7 @@ max-send-msg-size = "2147483647"
 
 # GRPCWebEnable defines if the gRPC-web should be enabled.
 # NOTE: gRPC must also be enabled, otherwise, this configuration is a no-op.
-enable = true
+enable = false
 
 # Address defines the gRPC-web server address to bind to.
 address = "0.0.0.0:9091"
