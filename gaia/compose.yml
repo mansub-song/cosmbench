@@ -1,0 +1,93 @@
+services:
+  core0:
+    user: "0:0"
+    container_name: core0
+    image: ghcr.io/cosmos/gaia:v21.0.1
+    ports:
+      - "9090:9090"
+      - "26657:26657"
+      - "13117:1317"
+    entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
+    # entrypoint: ["sleep", "infinity"]
+    volumes:
+      - ./core0/config/node_key.json:/opt/config/node_key.json:ro
+      - ./core0/config/priv_validator_key.json:/opt/config/priv_validator_key.json:ro
+      - ./core0/keyring-test:/opt/keyring-test:ro
+      - ./core0/config/config.toml:/opt/config/config.toml:ro
+      - ./core0/config/app.toml:/opt/config/app.toml:ro
+      - ./core0/config/genesis.json:/opt/config/genesis.json:rw
+      - ./start_core0.sh:/opt/start_core0.sh:ro
+    networks:
+      gaia-networks:
+        ipv4_address: 10.110.101.11
+
+  core1:
+    user: "0:0"
+    container_name: core1
+    image: ghcr.io/cosmos/gaia:v21.0.1
+    depends_on:
+      - core0
+    ports:
+      - "13118:1317"
+    entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
+    volumes:
+      - ./core1/config/node_key.json:/opt/config/node_key.json:ro
+      - ./core1/config/priv_validator_key.json:/opt/config/priv_validator_key.json:ro
+      - ./core1/keyring-test:/opt/keyring-test:ro
+      - ./core1/config/config.toml:/opt/config/config.toml:ro
+      - ./core1/config/app.toml:/opt/config/app.toml:ro
+      - ./core0/config/genesis.json:/opt/config/genesis.json:rw
+      - ./start_core0.sh:/opt/start_core0.sh:ro
+    networks:
+      gaia-networks:
+        ipv4_address: 10.110.101.12
+
+  core2:
+    user: "0:0"
+    container_name: core2
+    image: ghcr.io/cosmos/gaia:v21.0.1
+    depends_on:
+      - core0
+    ports:
+      - "13119:1317"
+    entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
+    volumes:
+      - ./core2/config/node_key.json:/opt/config/node_key.json:ro
+      - ./core2/config/priv_validator_key.json:/opt/config/priv_validator_key.json:ro
+      - ./core2/keyring-test:/opt/keyring-test:ro
+      - ./core2/config/config.toml:/opt/config/config.toml:ro
+      - ./core2/config/app.toml:/opt/config/app.toml:ro
+      - ./core0/config/genesis.json:/opt/config/genesis.json:rw
+      - ./start_core0.sh:/opt/start_core0.sh:ro
+    networks:
+      gaia-networks:
+        ipv4_address: 10.110.101.13
+
+  core3:
+    user: "0:0"
+    container_name: core3
+    image: ghcr.io/cosmos/gaia:v21.0.1
+    depends_on:
+      - core0
+    ports:
+      - "13110:1317"
+    entrypoint: ["/bin/sh", "/opt/start_core0.sh"]
+    volumes:
+      - ./core3/config/node_key.json:/opt/config/node_key.json:ro
+      - ./core3/config/priv_validator_key.json:/opt/config/priv_validator_key.json:ro
+      - ./core3/keyring-test:/opt/keyring-test:ro
+      - ./core3/config/config.toml:/opt/config/config.toml:ro
+      - ./core3/config/app.toml:/opt/config/app.toml:ro
+      - ./core0/config/genesis.json:/opt/config/genesis.json:rw
+      - ./start_core0.sh:/opt/start_core0.sh:ro
+    networks:
+      gaia-networks:
+        ipv4_address: 10.110.101.14
+
+networks:
+  gaia-networks:
+    name: gaia-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.110.0.0/16
